@@ -1,3 +1,5 @@
+package Ex1;
+
 public class ParallelMatrixCalculator {
 
     public static int[][] multiplyMatrices(int[][] A, int[][] B, int numThreads) throws InterruptedException {

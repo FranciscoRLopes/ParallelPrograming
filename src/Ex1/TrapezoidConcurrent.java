@@ -1,3 +1,5 @@
+package Ex1;
+
 public class TrapezoidConcurrent {
 
     // Interface funcional para receber a função f(x)

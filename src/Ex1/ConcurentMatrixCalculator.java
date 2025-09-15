@@ -1,3 +1,5 @@
+package Ex1;
+
 public class ConcurentMatrixCalculator {
     // Method to perform matrix multiplication
     public static int[][] multiplyMatrices(int[][] A, int[][] B) {
