@@ -1,0 +1,2 @@
+Perguntar ao stor se faz sentido fazer as threads fora do estimatePi. Porque se a estimativa fica boa com quanto mais amostras
+der eu nao devo de separar o numero de amostras pelas threads. Eu apenas devo de fazer o calculo do numero random
