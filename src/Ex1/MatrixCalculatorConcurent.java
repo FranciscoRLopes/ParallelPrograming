@@ -53,21 +53,15 @@ public class MatrixCalculatorConcurent {
 
 
         long StartTime = System.nanoTime();
-        System.out.println(StartTime);
 
-
-
-
-        // Multiply matrices A and B
         int[][] result = multiplyMatrices(A, B);
-
 
         long EndTime = System.nanoTime();
         long duration = (EndTime - StartTime);
-        String finalduration = String.valueOf(duration);
-        System.out.println(finalduration);
-        // Print the result
-        System.out.println("Resultant Matrix:");
+        double durationInSeconds = duration / 1_000_000_000.0;
+
+        System.out.printf("Tempo: ; %4f%n", durationInSeconds);
+        //System.out.println("Resultant Matrix:");
         //printMatrix(result);
     }
 }

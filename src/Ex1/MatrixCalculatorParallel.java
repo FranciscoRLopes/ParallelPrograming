@@ -86,11 +86,11 @@ public class MatrixCalculatorParallel {
 
         long EndTime = System.nanoTime();
         long duration = (EndTime - StartTime);
-        String finalduration = String.valueOf(duration);
-        System.out.println("Tempo de execução (em nanossegundos): " + finalduration);
+        double durationInSeconds = duration / 1_000_000_000.0;
 
+        System.out.printf("Tempo: ; %4f%n", durationInSeconds);
 
-        System.out.println("Matriz Resultante:");
+        //System.out.println("Matriz Resultante:");
         //printMatrix(result);
     }
 }
