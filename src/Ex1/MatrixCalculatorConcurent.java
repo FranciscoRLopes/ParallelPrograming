@@ -1,6 +1,6 @@
 package Ex1;
 
-public class ConcurentMatrixCalculator {
+public class MatrixCalculatorConcurent {
     // Method to perform matrix multiplication
     public static int[][] multiplyMatrices(int[][] A, int[][] B) {
         // Dimensions of the matrices
