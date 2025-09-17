@@ -27,8 +27,16 @@ public class TrapezoidConcurrent {
         // f(x) = x * (x - 1)
         Function f = (x) -> x * (x - 1);
 
+        long start = System.nanoTime();
+
         double result = trapezoidIntegral(f, 0.0, 1.0, 1e-7);
+        long end = System.nanoTime();
+
+        long duration = end - start;
+        double durationInSeconds = duration / 1_000_000_00.0;
 
         System.out.println("Integral aproximada: " + result);
+        System.out.printf("Tempo de execução: %.3f milisegundos%n", durationInSeconds);
+
     }
 }
