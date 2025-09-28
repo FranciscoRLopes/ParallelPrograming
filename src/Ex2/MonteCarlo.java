@@ -1,4 +1,4 @@
-package Ex2_JavaStream;
+package Ex2;
 
 import java.util.Random;
 import java.util.stream.IntStream;
