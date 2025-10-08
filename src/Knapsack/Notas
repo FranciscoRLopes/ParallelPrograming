@@ -1,13 +1,36 @@
-Original:
+##Original:
 começa a ser positivo no 90
 best: 4172
 
-Java Streams:
+##Java Streams:
 Cerca de 18 segundos.
 
-Manual Division:
+##Manual Division:
 22 seg
 Teve um comportamento estranho - O valor desceu, chegou aos 4172 e terminou reduzido para 4160
 Pode ter algum problema de paralelização para ter este resultado.
 Falar sobre isto no relatório
+
+Parâmetros a medir no relatório
+-nThreads ∈ {1, 2, 4, 8, …}
+-chunkSize (para as duas versões; p.ex. 512, 1k, 2k, 4k, 8k)
+-POP_SIZE, N_GENERATIONS (testa alguns valores)
+-Tempo total, tempo por geração, speedup e eficiência (speedup/threads).
+-Distribuições (30 runs) → boxplots + Mann-Whitney.
+
+
+--Sobre chunk (a + b - 1) / b--
+é uma técnica matemática muito usada em programação para fazer divisão inteira com arredondamento para cima.
+Serve para garantir que:
+todas as partes recebem pelo menos um pedaço,
+e que nenhum índice é deixado para trás.
+
+##Master worker: Com problemas - lach, acho que vou fazer de outra forma e aproveitar para implementar poison pill
+
+Notas entre manual e master worker:
+Chunks manuais → mais simples, overhead muito baixo. Para este problema (cada i custa o mesmo) costuma ser excelente.
+
+Master–Worker → ligeiramente mais complexo; bom se quiseres demonstrar arquitetura producer/consumer e comparar overhead
+de fila vs. chunks estáticos.
+Em problemas com custos desiguais por tarefa, costuma ganhar.
 
