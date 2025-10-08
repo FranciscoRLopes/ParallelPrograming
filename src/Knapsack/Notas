@@ -1,0 +1,13 @@
+Original:
+começa a ser positivo no 90
+best: 4172
+
+Java Streams:
+Cerca de 18 segundos.
+
+Manual Division:
+22 seg
+Teve um comportamento estranho - O valor desceu, chegou aos 4172 e terminou reduzido para 4160
+Pode ter algum problema de paralelização para ter este resultado.
+Falar sobre isto no relatório
+
