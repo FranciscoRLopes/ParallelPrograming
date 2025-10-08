@@ -16,7 +16,7 @@ public class MonteCarloPiProducerConsumer {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        int totalSamples = 10_000_000;
+        int totalSamples = 200_000_000;
         int queueCapacity = 10_000; // buffer size
 
         BlockingQueue<Point> queue = new ArrayBlockingQueue<>(queueCapacity);
