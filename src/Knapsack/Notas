@@ -2,6 +2,9 @@
 começa a ser positivo no 90
 best: 4172
 
+120seg sem OC
+107 com OC
+
 ##Java Streams:
 Cerca de 18 segundos.
 
@@ -34,3 +37,6 @@ Master–Worker → ligeiramente mais complexo; bom se quiseres demonstrar arqui
 de fila vs. chunks estáticos.
 Em problemas com custos desiguais por tarefa, costuma ganhar.
 
+
+
+Relatório: Para fazer estatísticas passei a contabilizar o tempo de execução no main, acrescentado coisas a esta classe...

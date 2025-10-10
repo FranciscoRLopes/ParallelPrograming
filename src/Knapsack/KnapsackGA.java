@@ -24,6 +24,7 @@ public class KnapsackGA {
 	}
 
 	public void run() {
+        long t0 = System.nanoTime();
 		for (int generation = 0; generation < N_GENERATIONS; generation++) {
 
 			// Step1 - Calculate Fitness
@@ -56,6 +57,8 @@ public class KnapsackGA {
 			}
 			population = newPopulation;
 		}
+        long t1 = System.nanoTime();
+        System.out.printf("Total time: %.3f s%n", (t1 - t0)/1e9);
 	}
 
 	private Individual tournament(int tournamentSize, Random r) {
