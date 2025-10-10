@@ -14,7 +14,7 @@ class KMaster {
         this.taskQueue = new ArrayBlockingQueue<>(Math.max(32, numWorkers * 4));
         this.resultQueue = new ArrayBlockingQueue<>(Math.max(32, numWorkers * 4));
         this.workers = new Thread[numWorkers];
-        this.poisonPill = new KTask(-1, -1, null, null, 0.0, 0, 0); // objeto único representando o "fim"
+        this.poisonPill = new KTask(-1, -1, null, null, 0.0, 0, 0);
 
         for (int i = 0; i < numWorkers; i++) {
             workers[i] = new Thread(new KWorker(taskQueue, resultQueue, poisonPill), "KWorker-" + i);

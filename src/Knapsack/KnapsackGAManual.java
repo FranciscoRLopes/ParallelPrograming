@@ -9,7 +9,7 @@ public class KnapsackGAManual {
     private static final double PROB_MUTATION = 0.5;
     private static final int TOURNAMENT_SIZE = 3;
 
-    private int nThreads = 10;
+    private int nThreads = 1;
     private Individual[] population;
 
     public KnapsackGAManual() {
