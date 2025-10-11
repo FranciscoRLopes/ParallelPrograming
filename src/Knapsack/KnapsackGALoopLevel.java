@@ -3,7 +3,7 @@ package Knapsack;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class KnapsackGAManual {
+public class KnapsackGALoopLevel {
     private static final int N_GENERATIONS = 500;
     private static final int POP_SIZE = 100_000;
     private static final double PROB_MUTATION = 0.5;
@@ -12,7 +12,7 @@ public class KnapsackGAManual {
     private int nThreads = 8;
     private Individual[] population;
 
-    public KnapsackGAManual() {
+    public KnapsackGALoopLevel() {
         this.nThreads = Math.max(1, nThreads);
         this.population = new Individual[POP_SIZE];
         populateInitialPopulationRandomly();
