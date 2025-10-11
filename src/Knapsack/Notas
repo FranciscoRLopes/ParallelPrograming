@@ -41,3 +41,8 @@ Em problemas com custos desiguais por tarefa, costuma ganhar.
 
 Relatório: Para fazer estatísticas passei a contabilizar o tempo de execução no main, acrescentado coisas a esta classe...
 
+ //KnapsackGA ga = new KnapsackGA();
+            //KnapsackGAStreams ga = new KnapsackGAStreams();
+            //KnapsackGAManual ga = new KnapsackGAManual();
+            //KnapsackGAForkJoin ga = new KnapsackGAForkJoin();
+            KnapsackGAExecuter ga = new KnapsackGAExecuter();
