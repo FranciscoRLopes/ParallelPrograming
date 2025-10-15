@@ -20,14 +20,14 @@ public class MainMasterWorker{
         System.out.println("=== Teste de performance (Master/Worker) ===");
         System.out.println("RUNS=" + RUNS + " | chunkSize=" + chunkSize + " | THREADS=" + Arrays.toString(THREADS));
 
-        // CSVs (opcional): um por run e um resumo
+
         String csvPerRun = "mw_results.csv";
         String csvResumo = "mw_summary.csv";
 
         try (BufferedWriter perRun = new BufferedWriter(new FileWriter(csvPerRun));
              BufferedWriter resumo = new BufferedWriter(new FileWriter(csvResumo))) {
 
-            // cabeçalhos
+
             perRun.write("threads,run,seconds\n");
             resumo.write("threads,avg_seconds,std_seconds,min_seconds,max_seconds\n");
 

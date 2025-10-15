@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        int RUNS = 10;
-        int[] THREADS = {1, 2, 4, 8, 16};
+        int RUNS = 30;
+        int[] THREADS = {2, 4, 8, 16};
 
         System.out.println("=== Teste de performance ===");
 
@@ -19,7 +19,10 @@ public class Main {
 
             for (int i = 0; i < RUNS; i++) {
                 long t0 = System.nanoTime();
-
+                //KnapsackGA ga = new KnapsackGA();
+                //KnapsackGAForkJoin ga = new KnapsackGAForkJoin();
+                //KnapsackGALoopLevel ga = new KnapsackGALoopLevel();
+                //KnapsackGAStreams ga = new KnapsackGAStreams();
                 KnapsackGAExecuter ga = new KnapsackGAExecuter(numThreads);
                 ga.run();
 

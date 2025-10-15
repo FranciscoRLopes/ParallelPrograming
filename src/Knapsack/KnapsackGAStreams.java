@@ -70,7 +70,7 @@ public class KnapsackGAStreams {
 
             this.population = next;
 
-            // Apenas um print por geração
+
             Individual best = bestOfPopulation();
             System.out.println("Generation " + gen + " best fitness: " + best.fitness);
         }

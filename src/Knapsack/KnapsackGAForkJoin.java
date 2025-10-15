@@ -104,7 +104,7 @@ public class KnapsackGAForkJoin {
             pool.invoke(new GenTask(current, next, 0, POP_SIZE));
 
             this.population = next;
-            // single print per generation
+
             Individual best = bestOfPopulation();
             System.out.println("Generation " + gen + " best fitness: " + best.fitness);
         }

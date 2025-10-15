@@ -72,12 +72,12 @@ public class KnapsackGAExecuter {
                     });
                 }
 
-                // executa e espera por todas as tarefas
+
                 for (Future<Void> f : pool.invokeAll(tasks)) f.get();
 
                 this.population = next;
 
-                // 1 print por geração
+
                 System.out.println("Generation " + gen + " best fitness: " + bestOfPopulation().fitness);
             }
         } catch (InterruptedException ie) {
