@@ -1,6 +1,0 @@
-threads,avg_seconds,std_seconds,min_seconds,max_seconds
-1,111,,105,,116,
-2,58,,57,,59,
-4,35,34,,36,
-8,2423,,25,
-16,18,,15,,20,
