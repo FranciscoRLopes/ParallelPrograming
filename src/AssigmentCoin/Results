@@ -1,0 +1,15 @@
+Cores;Threshold;Type;AvgTime(ms)
+12;1;Sequential;5006,47
+12;1;Parallel;
+12;2;Sequential;4831,54
+12;2;Parallel;2233,65
+12;4;Sequential;4811,20
+12;4;Parallel;1203,78
+12;8;Sequential;4825,32
+12;8;Parallel;645,48
+12;16;Sequential;4804,43
+12;16;Parallel;568,67
+12;32;Sequential;4822,25
+12;32;Parallel;4822,72
+12;64;Sequential;4938,00
+12;64;Parallel;4893,16
