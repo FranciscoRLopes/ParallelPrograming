@@ -1,3 +1,5 @@
+package AssigmentCoin;
+
 public class Coin {
 
 	public static final int LIMIT = 999;
