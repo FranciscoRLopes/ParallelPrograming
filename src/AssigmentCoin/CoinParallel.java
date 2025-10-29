@@ -25,7 +25,7 @@ public class CoinParallel {
     public static void main(String[] args) {
         int nCores = Runtime.getRuntime().availableProcessors();
         int[] coins = createRandomCoinSet(30);
-        int repeats = 20;
+        int repeats = 20; // Para ser mais rápido, rápido reduzir o numero de repetições de teste
 
         int[] thresholds = {1, 2, 4, 8, 16, 32, 64};
 
@@ -36,13 +36,13 @@ public class CoinParallel {
             long seqTotal = 0, parTotal = 0;
 
             for (int i = 0; i < repeats; i++) {
-                // --- Sequencial ---
+
                 long seqStart = System.nanoTime();
                 int rs = seq(coins, 0, 0);
                 long seqEnd = System.nanoTime() - seqStart;
                 seqTotal += seqEnd;
 
-                // --- Paralelo ---
+
                 long parStart = System.nanoTime();
                 int rp = par(coins, 0, 0);
                 long parEnd = System.nanoTime() - parStart;
@@ -62,7 +62,7 @@ public class CoinParallel {
         }
     }
 
-    // === Versão Sequencial ===
+
     private static int seq(int[] coins, int index, int acc) {
         if (index >= coins.length) {
             return acc < LIMIT ? acc : -1;
@@ -74,12 +74,12 @@ public class CoinParallel {
         return Math.max(a, b);
     }
 
-    // === Versão Paralela (usa o ForkJoinPool global) ===
+
     private static int par(int[] coins, int index, int acc) {
         return pool.invoke(new CoinTask(coins, index, acc));
     }
 
-    // === Classe interna ForkJoin ===
+    // === Classe ForkJoin ===
     static class CoinTask extends RecursiveTask<Integer> {
         private final int[] coins;
         private final int index;
@@ -96,7 +96,7 @@ public class CoinParallel {
             if (index >= coins.length) return acc < LIMIT ? acc : -1;
             if (acc + coins[index] > LIMIT) return -1;
 
-            // threshold dinâmico
+            // threshold
             if (coins.length - index <= THRESHOLD) {
                 return seq(coins, index, acc);
             }
