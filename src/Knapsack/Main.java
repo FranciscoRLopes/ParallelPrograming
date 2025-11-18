@@ -19,11 +19,11 @@ public class Main {
 
             for (int i = 0; i < RUNS; i++) {
                 long t0 = System.nanoTime();
-                //KnapsackGA ga = new KnapsackGA();
+                KnapsackGA ga = new KnapsackGA();
                 //KnapsackGAForkJoin ga = new KnapsackGAForkJoin();
                 //KnapsackGALoopLevel ga = new KnapsackGALoopLevel();
                 //KnapsackGAStreams ga = new KnapsackGAStreams();
-                KnapsackGAExecuter ga = new KnapsackGAExecuter(numThreads);
+                //KnapsackGAExecuter ga = new KnapsackGAExecuter(numThreads);
                 ga.run();
 
                 long elapsed = (System.nanoTime() - t0) / 1_000_000_000; // segundos
