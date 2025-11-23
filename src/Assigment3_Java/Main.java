@@ -6,5 +6,6 @@ public class Main {
 		//ga.run();
 
         new KnapsackGAChannels().run();
+        //new KnapsackGACoroutines().run();
 	}
 }
