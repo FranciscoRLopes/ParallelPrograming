@@ -6,12 +6,12 @@ use std::time::Instant;
 const GENE_SIZE: usize = 1000;
 const WEIGHT_LIMIT: i32 = 300;
 
-const POP_SIZE: usize = 10_000;
+const POP_SIZE: usize = 100_000;
 const N_GENERATIONS: usize = 500;
 const PROB_MUTATION: f64 = 0.5;
 const TOURNAMENT_SIZE: usize = 3;
 
-const N_WORKERS: usize = 16;
+const N_WORKERS: usize = 12;
 
 #[derive(Clone)]
 struct Individual {

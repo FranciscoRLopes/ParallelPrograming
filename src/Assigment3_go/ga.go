@@ -7,7 +7,7 @@ import (
 )
 
 const (
-    PopSize        = 5000 //Default 100000
+    PopSize        = 100000
     NGenerations   = 500
     ProbMutation   = 0.5
     TournamentSize = 3
