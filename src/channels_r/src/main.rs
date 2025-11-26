@@ -113,7 +113,7 @@ fn evaluate_population_parallel_channels(
 
     drop(res_tx);
 
-    // Envia jobs
+    
     for (idx, ind) in population.iter().enumerate() {
         job_tx
             .send((idx, ind.selected_items.clone()))
@@ -122,7 +122,7 @@ fn evaluate_population_parallel_channels(
 
     drop(job_tx);
 
-    // Recebe resultados
+    
     for _ in 0..population.len() {
         let (idx, fitness) = res_rx
             .recv()
@@ -135,7 +135,7 @@ fn evaluate_population_parallel_channels(
     }
 }
 
-// ---------- operadores GA ----------
+
 fn tournament<'a, R: Rng>(population: &'a [Individual], rng: &mut R) -> &'a Individual {
     let mut best = &population[rng.gen_range(0..population.len())];
 
@@ -181,7 +181,7 @@ fn best_of_population<'a>(population: &'a [Individual]) -> &'a Individual {
         .expect("população vazia")
 }
 
-// ---------- GA paralelo com channels ----------
+
 fn main() {
     let (values, weights) = init_problem();
     let mut population = init_population();
