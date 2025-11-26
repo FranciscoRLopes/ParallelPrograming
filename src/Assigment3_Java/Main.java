@@ -5,7 +5,7 @@ public class Main {
 		//KnapsackGA ga = new KnapsackGA();
 		//ga.run();
 
-        new KnapsackGAChannels().run();
-        //new KnapsackGACoroutines().run();
+        //new KnapsackGAChannels().run();
+        new KnapsackGACoroutines().run();
 	}
 }

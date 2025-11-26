@@ -232,7 +232,7 @@ public class KnapsackGAChannels {
 
         long start = System.currentTimeMillis();
 
-        /
+        
         chFitnessIn.send(new GenerationMsg(initialPopulation, 0));
 
        
