@@ -19,7 +19,7 @@ struct Individual {
     fitness: i32,
 }
 
-// ---------- mensagens do Actor Model ----------
+
 enum Message {
     Eval {
         idx: usize,
@@ -28,14 +28,14 @@ enum Message {
     Stop,
 }
 
-// ---------- worker actor ----------
+
 struct Worker {
     id: usize,
     sender: mpsc::Sender<Message>,
     handle: thread::JoinHandle<()>,
 }
 
-// ---------- problema ----------
+
 fn init_problem() -> (Vec<i32>, Vec<i32>) {
     let mut rng = rand::rngs::StdRng::seed_from_u64(1);
     let mut values = Vec::with_capacity(GENE_SIZE);
@@ -67,7 +67,7 @@ fn init_population() -> Vec<Individual> {
         .collect()
 }
 
-// ---------- criar atores (workers) ----------
+
 fn spawn_workers(
     values: Arc<Vec<i32>>,
     weights: Arc<Vec<i32>>,
@@ -107,12 +107,12 @@ fn spawn_workers(
                         }
                     }
                     Ok(Message::Stop) | Err(_) => {
-                        // mensagem de término ou canal fechado
+                        // mensagem de fecho
                         break;
                     }
                 }
             }
-            // actor termina aqui
+            // actor termina 
         });
 
         workers.push(Worker { id, sender: tx, handle });
@@ -121,7 +121,7 @@ fn spawn_workers(
     workers
 }
 
-// ---------- avaliação via Actor Model ----------
+
 fn evaluate_population_actor(
     population: &mut [Individual],
     values: &[i32],
@@ -134,7 +134,7 @@ fn evaluate_population_actor(
 
     let mut workers = spawn_workers(Arc::clone(&values), Arc::clone(&weights), result_tx);
 
-    // manager = "ator" que distribui mensagens de Eval para outros atores
+    // master = "ator" que distribui mensagens de Eval para outros atores
     let mut next_worker = 0;
 
     for (idx, ind) in population.iter().enumerate() {
@@ -169,7 +169,7 @@ fn evaluate_population_actor(
     }
 }
 
-// ---------- operadores GA ----------
+
 fn tournament<'a, R: Rng>(population: &'a [Individual], rng: &mut R) -> &'a Individual {
     let mut best = &population[rng.gen_range(0..population.len())];
 
@@ -215,7 +215,7 @@ fn best_of_population<'a>(population: &'a [Individual]) -> &'a Individual {
         .expect("população vazia")
 }
 
-// ---------- GA com Actor Model ----------
+
 fn main() {
     let (values, weights) = init_problem();
     let mut population = init_population();

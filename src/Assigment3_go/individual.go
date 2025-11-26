@@ -12,12 +12,12 @@ var (
 	Weights [GeneSize]int
 )
 
-// Inicializa os valores/pesos (tipo static { } em Java)
+
 func InitProblem() {
-	r := rand.New(rand.NewSource(1)) // seed fixa como no Random(1L)
+	r := rand.New(rand.NewSource(1)) 
 	for i := 0; i < GeneSize; i++ {
-		Values[i] = r.Intn(100)  // 0..99
-		Weights[i] = r.Intn(100) // 0..99
+		Values[i] = r.Intn(100)  
+		Weights[i] = r.Intn(100) 
 	}
 }
 
@@ -29,12 +29,12 @@ type Individual struct {
 func NewRandomIndividual(r *rand.Rand) Individual {
 	genes := make([]bool, GeneSize)
 	for i := 0; i < GeneSize; i++ {
-		genes[i] = r.Intn(2) == 1 // 0 ou 1
+		genes[i] = r.Intn(2) == 1 
 	}
 	return Individual{Genes: genes, Fitness: 0}
 }
 
-// Versão com penalização (para evitar tudo ficar a 0)
+
 func (ind *Individual) MeasureFitness() {
 	totalWeight := 0
 	totalValue := 0
@@ -46,14 +46,14 @@ func (ind *Individual) MeasureFitness() {
 	}
 
 	if totalWeight > WeightLimit {
-		// penaliza excesso de peso
+		
 		ind.Fitness = -(totalWeight - WeightLimit)
 	} else {
 		ind.Fitness = totalValue
 	}
 }
 
-// ---- Operadores genéticos ----
+
 
 func Crossover(r *rand.Rand, a, b Individual) Individual {
 	childGenes := make([]bool, GeneSize)

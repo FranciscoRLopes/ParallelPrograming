@@ -29,7 +29,7 @@ public class KnapsackGACoroutines {
 
         for (int generation = 0; generation < N_GENERATIONS; generation++) {
 
-            // --------- FITNESS EM CO-ROTINAS (VIRTUAL THREADS) ---------
+            
             CountDownLatch latch = new CountDownLatch(POP_SIZE);
 
             for (int i = 0; i < POP_SIZE; i++) {
@@ -41,17 +41,17 @@ public class KnapsackGACoroutines {
             }
 
             try {
-                latch.await(); // Espera todas as co-rotinas desta geração
+                latch.await(); 
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
 
-            // --------- MELHOR INDIVÍDUO / LOG ---------
+            
             Individual best = bestOfPopulation();
             System.out.println("Generation " + generation +
                     " best fitness = " + best.fitness);
 
-            // --------- REPRODUÇÃO (SELEÇÃO + CROSSOVER + MUTAÇÃO) ---------
+            
             if (generation < N_GENERATIONS - 1) {
                 reproduce();
             }
@@ -81,7 +81,6 @@ public class KnapsackGACoroutines {
     }
 
     private Individual tournament(int tournamentSize, Random r) {
-        // Mesmo comportamento do teu KnapsackGA sequencial
         Individual best = population[r.nextInt(POP_SIZE)];
         for (int i = 0; i < tournamentSize; i++) {
             Individual other = population[r.nextInt(POP_SIZE)];

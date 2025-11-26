@@ -4,13 +4,13 @@ import java.util.Random;
 
 public class KnapsackGAChannels {
 
-    // Mesmos parâmetros do sequencial
+
     private static final int N_GENERATIONS = 500;
     private static final int POP_SIZE = 100000;
     private static final double PROB_MUTATION = 0.5;
     private static final int TOURNAMENT_SIZE = 3;
 
-    // ---------------- MENSAGENS ----------------
+    
 
     interface Message { }
 
@@ -59,7 +59,7 @@ public class KnapsackGAChannels {
                 if (msg == null) continue;
 
                 if (msg instanceof StopMsg) {
-                    // Propaga o Stop e termina
+                    // Poison
                     out.send(msg);
                     break;
                 }
@@ -75,8 +75,8 @@ public class KnapsackGAChannels {
     }
 
     /**
-     * Worker que recebe populações já avaliadas, imprime / segue
-     * e decide quando parámos (última geração).
+     * Worker que recebe populações já avaliadas, printa / segue
+     * e decide a ultima geracao.
      */
     static class LoggerWorker implements Runnable {
 
@@ -99,7 +99,6 @@ public class KnapsackGAChannels {
                 if (msg == null) continue;
 
                 if (msg instanceof StopMsg) {
-                    // Se algum dia recebêssemos Stop “de trás”
                     break;
                 }
 
@@ -111,8 +110,6 @@ public class KnapsackGAChannels {
 
                     System.out.println("Generation " + eval.generation +
                             " best fitness = " + best.fitness);
-
-                    // Se chegámos à última geração, pára o pipeline
                     if (eval.generation >= maxGenerations - 1) {
                         System.out.println("Finished after " + (eval.generation + 1)
                                 + " generations. Best overall fitness = "
@@ -120,7 +117,6 @@ public class KnapsackGAChannels {
                         out.send(new StopMsg());
                         break;
                     } else {
-                        // Continua o pipeline: manda a população avaliada
                         out.send(eval);
                     }
                 }
@@ -140,7 +136,6 @@ public class KnapsackGAChannels {
 
     /**
      * Worker que recebe populações avaliadas e gera a próxima geração
-     * via torneio + crossover + mutação, enviando uma GenerationMsg.
      */
     static class ReproductionWorker implements Runnable {
 
@@ -161,7 +156,7 @@ public class KnapsackGAChannels {
                 if (msg == null) continue;
 
                 if (msg instanceof StopMsg) {
-                    // Propaga e termina
+                    // Poison
                     out.send(msg);
                     break;
                 }
@@ -200,15 +195,15 @@ public class KnapsackGAChannels {
         }
     }
 
-    // ---------------- EXECUÇÃO (API PÚBLICA) ----------------
+    // ---------------- main ----------------
 
     public void run() {
-        // Canais do pipeline
+        
         Channel<Message> chFitnessIn = new Channel<>();
         Channel<Message> chFitnessToLogger = new Channel<>();
         Channel<Message> chLoggerToRepro = new Channel<>();
 
-        // Fitness -> Logger -> Repro -> Fitness (ciclo)
+        
         Channel<Message> chReproToFitness = chFitnessIn;
 
         Thread fitnessThread = new Thread(
@@ -237,10 +232,10 @@ public class KnapsackGAChannels {
 
         long start = System.currentTimeMillis();
 
-        // Entra no pipeline
+        /
         chFitnessIn.send(new GenerationMsg(initialPopulation, 0));
 
-        // Espera que o Stop atravesse o pipeline todo e que as threads terminem
+       
         try {
             fitnessThread.join();
             loggerThread.join();
